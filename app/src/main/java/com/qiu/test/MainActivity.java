@@ -16,6 +16,9 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.ashokvarma.bottomnavigation.BadgeItem;
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.qiu.swipeback.SwipeBackActivity;
 
 import qiu.niorgai.StatusBarCompat;
@@ -30,9 +33,40 @@ public class MainActivity extends SwipeBackActivity
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_main);
 
+//        StatusBarCompat.translucentStatusBar(this, true);
+        StatusBarCompat.setStatusBarColor (this,Color.RED);
+
+        BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+
+//
+//        BadgeItem numberBadgeItem = new BadgeItem()
+//                .setBorderWidth(4)
+//                .setBackgroundColorResource(Color.GREEN)
+//                .setText("fdsf")
+//                .setHideOnSelect(false);
+
+
+//        BadgeItem numberBadgeItem = new BadgeItem()
+//                .setBorderWidth(4)
+//                .setBackgroundColorResource(R.color.colorPrimaryDark)
+//                .setText("" + 1)
+//                .setHideOnSelect(false);
+        bottomNavigationBar
+                .addItem(new BottomNavigationItem(R.drawable.ic_home_white_24dp, "Home"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_book_white_24dp, "Books"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_music_note_white_24dp, "Music"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_tv_white_24dp, "Movies & TV"))
+                .initialise();
+
+//        bottomNavigationBar.setAutoHideEnabled (false);
+//        bottomNavigationBar
+//                .setMode(BottomNavigationBar.MODE_FIXED);
+//        bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
+//        bottomNavigationBar.setBackgroundResource (R.color.test);
+
 //        fullScreenContentView ();
-        StatusBarCompatLollipop.translucentStatusBar (this,true);
-        StatusBarCompatLollipop.setStatusBarColor (this,Color.GREEN);
+//        StatusBarCompatLollipop.translucentStatusBar (this,true);
+//        StatusBarCompatLollipop.setStatusBarColor (this,Color.GREEN);
 //        //设置状态栏的颜色
 //        StatusBarCompat.setStatusBarColor(this, getResources ().getColor (R.color.colorPrimary));
 //        //透明状态栏

@@ -5,17 +5,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:fitsSystemWindows="true"
     android:background="@android:color/holo_blue_bright"
-    tools:context="com.qiu.test.MainActivity">
+    tools:context="com.qiu.test.MainActivity"
+    xmlns:BottomNavigationBar="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:onClick="startActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"/>
+
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_navigation_bar"
+        android:layout_width="match_parent"
+        BottomNavigationBar:bnbBackgroundColor="@color/colorPrimary"
+        BottomNavigationBar:bnbMode="mode_fixed"
+        BottomNavigationBar:bnbBackgroundStyle="background_style_static"
+        BottomNavigationBar:bnbActiveColor="@color/test"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

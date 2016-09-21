@@ -28,6 +28,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project (path: ':swipeback')
     compile 'com.github.niorgai:StatusBarCompat:1.2.0'
+    compile 'com.ashokvarma.android:bottom-navigation-bar:1.3.0'
 }
 
 repositories {

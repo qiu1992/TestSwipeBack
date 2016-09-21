@@ -1,9 +1,12 @@
 package com.qiu.test;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.qiu.swipeback.SwipeBackActivity;
+
+import qiu.niorgai.StatusBarCompat;
 
 public class SecondActivity extends SwipeBackActivity
 {
@@ -13,7 +16,10 @@ public class SecondActivity extends SwipeBackActivity
     {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_second);
+
+//        StatusBarCompat.translucentStatusBar(this, true);
         Log.d ("qiuqiu", "onCreate: SecondActivity");
+        StatusBarCompat.setStatusBarColor (this, Color.YELLOW);
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.OnApplyWindowInsetsListener;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.view.WindowInsetsCompat;
 import android.util.Log;
 import android.view.View;
@@ -31,26 +32,24 @@ public class MainActivity extends SwipeBackActivity
     protected void onCreate (Bundle savedInstanceState)
     {
         super.onCreate (savedInstanceState);
+
+        int height = getStatusBarHeight(this);
         setContentView (R.layout.activity_main);
 
-//        StatusBarCompat.translucentStatusBar(this, true);
-        StatusBarCompat.setStatusBarColor (this,Color.RED);
+//        final View view = findViewById(R.id.activity_main);
+//        view.setPadding(0,height,0,0);
 
-        BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        StatusBarCompat.translucentStatusBar(this, true);
+//        StatusBarCompat.setStatusBarColor (this,Color.RED);
 
-//
-//        BadgeItem numberBadgeItem = new BadgeItem()
-//                .setBorderWidth(4)
-//                .setBackgroundColorResource(Color.GREEN)
-//                .setText("fdsf")
-//                .setHideOnSelect(false);
-
+        final BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
 
 //        BadgeItem numberBadgeItem = new BadgeItem()
 //                .setBorderWidth(4)
 //                .setBackgroundColorResource(R.color.colorPrimaryDark)
 //                .setText("" + 1)
 //                .setHideOnSelect(false);
+
         bottomNavigationBar
                 .addItem(new BottomNavigationItem(R.drawable.ic_home_white_24dp, "Home"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_book_white_24dp, "Books"))
@@ -58,50 +57,49 @@ public class MainActivity extends SwipeBackActivity
                 .addItem(new BottomNavigationItem(R.drawable.ic_tv_white_24dp, "Movies & TV"))
                 .initialise();
 
-//        bottomNavigationBar.setAutoHideEnabled (false);
-//        bottomNavigationBar
-//                .setMode(BottomNavigationBar.MODE_FIXED);
-//        bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
-//        bottomNavigationBar.setBackgroundResource (R.color.test);
+        final ViewPager viewPager = (ViewPager) findViewById (R.id.test_viewpager);
+        TestPagerAdapter pagerAdapter = new TestPagerAdapter (getSupportFragmentManager ());
+        viewPager.setAdapter (pagerAdapter);
+        bottomNavigationBar.setTabSelectedListener (new BottomNavigationBar.OnTabSelectedListener ()
+        {
+            @Override
+            public void onTabSelected (int position)
+            {
+                viewPager.setCurrentItem (position);
+            }
 
-//        fullScreenContentView ();
-//        StatusBarCompatLollipop.translucentStatusBar (this,true);
-//        StatusBarCompatLollipop.setStatusBarColor (this,Color.GREEN);
-//        //设置状态栏的颜色
-//        StatusBarCompat.setStatusBarColor(this, getResources ().getColor (R.color.colorPrimary));
-//        //透明状态栏
-//        StatusBarCompat.translucentStatusBar(this);
-//        //SDK >= 21时, 取消状态栏的阴影
-//        StatusBarCompat.translucentStatusBar(this, true);
-//        //为 CollapsingToolbarLayout 设置颜色
-//        StatusBarCompat.setStatusBarColorForCollapsingToolbar(this,getResources ().getColor (R.color.colorPrimary));
+            @Override
+            public void onTabUnselected (int position)
+            {
 
-//        Window window = getWindow();
-//
-//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-//        if (true) {
-//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//            window.setStatusBarColor(Color.RED);
-//            //隐藏状态栏的阴影window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-//        } else {
-//            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-//        }
-//
-//        ViewGroup mContentView = (ViewGroup) window.findViewById(Window.ID_ANDROID_CONTENT);
-//        View mChildView = mContentView.getChildAt(0);
-//        if (mChildView != null) {
-//            ViewCompat.setOnApplyWindowInsetsListener(mChildView, new OnApplyWindowInsetsListener () {
-//                @Override
-//                public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
-//                    return insets;
-//                }
-//            });
-//            ViewCompat.setFitsSystemWindows(mChildView, false);
-//            ViewCompat.requestApplyInsets(mChildView);
-//
-//        }
+            }
 
+            @Override
+            public void onTabReselected (int position)
+            {
+
+            }
+        });
+
+        viewPager.addOnPageChangeListener (new ViewPager.OnPageChangeListener ()
+        {
+            @Override
+            public void onPageScrolled (int position, float positionOffset, int positionOffsetPixels)
+            {
+            }
+
+            @Override
+            public void onPageSelected (int position)
+            {
+                bottomNavigationBar.selectTab (position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged (int state)
+            {
+
+            }
+        });
         Log.d ("qiuqiu", "onCreate: MainActivity");
     }
 

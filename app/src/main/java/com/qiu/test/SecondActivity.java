@@ -3,6 +3,7 @@ package com.qiu.test;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 
 import com.qiu.swipeback.SwipeBackActivity;
 
@@ -17,10 +18,20 @@ public class SecondActivity extends SwipeBackActivity
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_second);
 
-//        StatusBarCompat.translucentStatusBar(this, true);
+        StatusBarCompat.translucentStatusBar(this, true);
         Log.d ("qiuqiu", "onCreate: SecondActivity");
-        StatusBarCompat.setStatusBarColor (this, Color.YELLOW);
+//        StatusBarCompat.setStatusBarColor (this, Color.YELLOW);
     }
+
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        return super.dispatchTouchEvent(ev);
+//    }
+//
+//    @Override
+//    protected boolean supportSlideBack() {
+//        return false;
+//    }
 
     @Override
     protected void onPause ()

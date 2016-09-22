@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     android:id="@+id/activity_main"
+    xmlns:BottomNavigationBar="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@android:color/holo_blue_bright"
-    tools:context="com.qiu.test.MainActivity"
-    xmlns:BottomNavigationBar="http://schemas.android.com/apk/res-auto">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.qiu.test.MainActivity">
 
-    <TextView
-        android:onClick="startActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/test_viewpager"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
 
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
-        android:layout_alignParentBottom="true"
         android:id="@+id/bottom_navigation_bar"
-        android:layout_width="match_parent"
-        BottomNavigationBar:bnbBackgroundColor="@color/colorPrimary"
-        BottomNavigationBar:bnbMode="mode_fixed"
-        BottomNavigationBar:bnbBackgroundStyle="background_style_static"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         BottomNavigationBar:bnbActiveColor="@color/test"
-        android:layout_height="wrap_content"/>
-</RelativeLayout>
+        BottomNavigationBar:bnbBackgroundColor="@color/colorPrimary"
+        BottomNavigationBar:bnbBackgroundStyle="background_style_static"
+        BottomNavigationBar:bnbMode="mode_fixed"/>
+</LinearLayout>

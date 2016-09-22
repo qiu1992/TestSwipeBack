@@ -74,6 +74,15 @@ public class SwipeWindowHelper extends Handler
         mIsSupportSlideBack = supportSlideBack;
     }
 
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
+    public static int dip2px (Context context, float dpValue)
+    {
+        final float scale = context.getResources ().getDisplayMetrics ().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
     public boolean processTouchEvent (MotionEvent ev)
     {
         if (!mIsSupportSlideBack)
@@ -90,7 +99,7 @@ public class SwipeWindowHelper extends Handler
         {  //动态设置滑动拦截事件的区域
 //            final int commonMargin = 45;
 //            mMarginThreshold = Math.min (MARGIN_THRESHOLD, commonMargin);
-            mMarginThreshold = 100;
+            mMarginThreshold = dip2px (mCurrentContentView.getContext (),50);
         }
 
         final int action = ev.getAction () & MotionEvent.ACTION_MASK;

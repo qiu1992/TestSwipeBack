@@ -1,9 +1,10 @@
 package com.qiu.swipeback;
 
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 
-public class SwipeBackActivity extends AppCompatActivity
+import com.qiu.rxlifecycle.MyRxAppCompatActivity;
+
+public class SwipeBackActivity extends MyRxAppCompatActivity
 {
     private static final String TAG = "SwipeBackActivity";
 

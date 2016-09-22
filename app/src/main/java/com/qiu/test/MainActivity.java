@@ -2,6 +2,7 @@ package com.qiu.test;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.qiu.swipeback.SwipeBackActivity;
+import com.qiu.test.databinding.ActivityMainBinding;
 
 import qiu.niorgai.StatusBarCompat;
 import qiu.niorgai.StatusBarCompatLollipop;
@@ -28,13 +30,15 @@ import qiu.niorgai.StatusBarCompatLollipop;
 public class MainActivity extends SwipeBackActivity
 {
 
+    ActivityMainBinding mainBinding;
     @Override
     protected void onCreate (Bundle savedInstanceState)
     {
         super.onCreate (savedInstanceState);
 
         int height = getStatusBarHeight(this);
-        setContentView (R.layout.activity_main);
+//        setContentView (R.layout.activity_main);
+        mainBinding = DataBindingUtil.setContentView (this,R.layout.activity_main);
 
 //        final View view = findViewById(R.id.activity_main);
 //        view.setPadding(0,height,0,0);
@@ -42,7 +46,8 @@ public class MainActivity extends SwipeBackActivity
         StatusBarCompat.translucentStatusBar(this, true);
 //        StatusBarCompat.setStatusBarColor (this,Color.RED);
 
-        final BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+//        final BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        final BottomNavigationBar bottomNavigationBar = mainBinding.bottomNavigationBar;
 
 //        BadgeItem numberBadgeItem = new BadgeItem()
 //                .setBorderWidth(4)
